@@ -3,16 +3,18 @@ import sqlite3
 import os
 from datetime import datetime
 from flask_cors import CORS 
-import smtplib
-from email.mime.text import MIMEText
-from email.mime.multipart import MIMEMultipart
 
 app = Flask(__name__)
 CORS(app) 
 
-# Database setup
+# Database setup - Modified for Vercel
+def get_db_connection():
+    # On Vercel, we need to handle database differently
+    conn = sqlite3.connect('/tmp/visitors.db')
+    return conn
+
 def init_db():
-    conn = sqlite3.connect('visitors.db')
+    conn = get_db_connection()
     c = conn.cursor()
     
     # Visitors table
@@ -175,8 +177,10 @@ def init_db():
     conn.commit()
     conn.close()
 
-# Initialize database
-init_db()
+# Initialize database on first request
+@app.before_first_request
+def initialize():
+    init_db()
 
 @app.route('/')
 def index():
@@ -184,7 +188,7 @@ def index():
 
 @app.route('/vehicles')
 def vehicles():
-    conn = sqlite3.connect('visitors.db')
+    conn = get_db_connection()
     c = conn.cursor()
     c.execute("SELECT * FROM vehicles")
     vehicles = c.fetchall()
@@ -193,7 +197,7 @@ def vehicles():
 
 @app.route('/vehicle/<int:vehicle_id>')
 def vehicle_detail(vehicle_id):
-    conn = sqlite3.connect('visitors.db')
+    conn = get_db_connection()
     c = conn.cursor()
     c.execute("SELECT * FROM vehicles WHERE id = ?", (vehicle_id,))
     vehicle = c.fetchone()
@@ -207,7 +211,7 @@ def vehicle_detail(vehicle_id):
             'description': vehicle[3],
             'capacity': vehicle[4],
             'price_per_km': vehicle[5],
-            'features': vehicle[6].split(', '),
+            'features': vehicle[6].split(', ') if vehicle[6] else [],
             'fuel_type': vehicle[7],
             'transmission': vehicle[8],
             'luggage_capacity': vehicle[9]
@@ -218,7 +222,7 @@ def vehicle_detail(vehicle_id):
 
 @app.route('/vacation-packages')
 def vacation_packages():
-    conn = sqlite3.connect('visitors.db')
+    conn = get_db_connection()
     c = conn.cursor()
     c.execute("SELECT * FROM packages")
     packages = c.fetchall()
@@ -227,7 +231,7 @@ def vacation_packages():
 
 @app.route('/package/<int:package_id>')
 def package_detail(package_id):
-    conn = sqlite3.connect('visitors.db')
+    conn = get_db_connection()
     c = conn.cursor()
     c.execute("SELECT * FROM packages WHERE id = ?", (package_id,))
     package = c.fetchone()
@@ -241,20 +245,18 @@ def package_detail(package_id):
             'description': package[3],
             'duration': package[4],
             'price': package[5],
-            'itinerary': package[6].split('|'),
-            'inclusions': package[7].split(', '),
-            'exclusions': package[8].split(', '),
-            'highlights': package[9].split(', ')
+            'itinerary': package[6].split('|') if package[6] else [],
+            'inclusions': package[7].split(', ') if package[7] else [],
+            'exclusions': package[8].split(', ') if package[8] else [],
+            'highlights': package[9].split(', ') if package[9] else []
         }
         return render_template('package-detail.html', package=package_dict)
     else:
         return "Package not found", 404
 
-
-
 @app.route('/char-dham-yatra')
 def char_dham_yatra():
-    conn = sqlite3.connect('visitors.db')
+    conn = get_db_connection()
     c = conn.cursor()
     c.execute("SELECT * FROM char_dham_packages")
     packages = c.fetchall()
@@ -268,10 +270,10 @@ def char_dham_yatra():
             'duration': package[2],
             'price': package[3],
             'description': package[4],
-            'itinerary': package[5].split('|'),
-            'inclusions': package[6].split(', '),
-            'exclusions': package[7].split(', '),
-            'highlights': package[8].split(', ')
+            'itinerary': package[5].split('|') if package[5] else [],
+            'inclusions': package[6].split(', ') if package[6] else [],
+            'exclusions': package[7].split(', ') if package[7] else [],
+            'highlights': package[8].split(', ') if package[8] else []
         })
     
     return render_template('char-dham-yatra.html', packages=packages_list)
@@ -284,7 +286,7 @@ def char_dham_booking():
             return jsonify({"status": "error", "message": "No data provided"}), 400
         
         # Save booking to database
-        conn = sqlite3.connect('visitors.db')
+        conn = get_db_connection()
         c = conn.cursor()
         c.execute("INSERT INTO bookings (name, email, phone, pickup_location, drop_location, passengers, message) VALUES (?, ?, ?, ?, ?, ?, ?)",
                   (data['name'], data.get('email', ''), data['phone'], 
@@ -300,7 +302,7 @@ def char_dham_booking():
 
 @app.route('/blogs')
 def blogs():
-    conn = sqlite3.connect('visitors.db')
+    conn = get_db_connection()
     c = conn.cursor()
     c.execute("SELECT * FROM blogs ORDER BY publish_date DESC")
     blogs = c.fetchall()
@@ -320,9 +322,10 @@ def blogs():
         })
     
     return render_template('blogs.html', blogs=blog_list)
+
 @app.route('/blog/<int:blog_id>')
 def blog_detail(blog_id):
-    conn = sqlite3.connect('visitors.db')
+    conn = get_db_connection()
     c = conn.cursor()
     c.execute("SELECT * FROM blogs WHERE id = ?", (blog_id,))
     blog = c.fetchone()
@@ -343,17 +346,19 @@ def blog_detail(blog_id):
     else:
         return "Blog not found", 404
 
-
 @app.route('/api/submit-visitor', methods=['POST'])
 def submit_visitor():
-    data = request.json
-    conn = sqlite3.connect('visitors.db')
-    c = conn.cursor()
-    c.execute("INSERT INTO visitors (name, email, phone, interest, message) VALUES (?, ?, ?, ?, ?)",
-              (data['name'], data.get('email', ''), data['phone'], data['interest'], data.get('message', '')))
-    conn.commit()
-    conn.close()
-    return jsonify({"status": "success", "message": "Visitor information stored successfully"})
+    try:
+        data = request.json
+        conn = get_db_connection()
+        c = conn.cursor()
+        c.execute("INSERT INTO visitors (name, email, phone, interest, message) VALUES (?, ?, ?, ?, ?)",
+                  (data['name'], data.get('email', ''), data['phone'], data['interest'], data.get('message', '')))
+        conn.commit()
+        conn.close()
+        return jsonify({"status": "success", "message": "Visitor information stored successfully"})
+    except Exception as e:
+        return jsonify({"status": "error", "message": str(e)}), 500
 
 @app.route('/contact-us')
 def contact_us():
@@ -367,7 +372,7 @@ def submit_contact():
             return jsonify({"status": "error", "message": "No data provided"}), 400
         
         # Save to database
-        conn = sqlite3.connect('visitors.db')
+        conn = get_db_connection()
         c = conn.cursor()
         c.execute("INSERT INTO visitors (name, email, phone, interest, message) VALUES (?, ?, ?, ?, ?)",
                   (data['name'], data['email'], data['phone'], data['subject'], data['message']))
@@ -378,8 +383,6 @@ def submit_contact():
         
     except Exception as e:
         return jsonify({"status": "error", "message": str(e)}), 500
-# Add these routes to your Flask app
-
 
 @app.route('/char-dham/<dham_name>')
 def char_dham_detail(dham_name):
@@ -396,17 +399,6 @@ def char_dham_detail(dham_name):
             'detailed_info': '''
             <h3>About Yamunotri</h3>
             <p>Yamunotri is the source of the Yamuna River and the seat of the goddess Yamuna in Hinduism. It is one of the four sites in India's Char Dham pilgrimage.</p>
-            
-            <h3>Key Highlights</h3>
-            <ul>
-                <li>Located in the Uttarkashi district of Uttarakhand</li>
-                <li>The actual source is a frozen lake of ice and glacier (Champasar Glacier) located at an altitude of 4,421 meters</li>
-                <li>The temple was built by Maharani Gularia of Jaipur in the 19th century</li>
-                <li>Hot water springs at Janki Chatti are used to prepare prasad</li>
-            </ul>
-            
-            <h3>How to Reach</h3>
-            <p>The trek from Hanuman Chatti to Yamunotri is 13 km. Ponies and palanquins are available for hire.</p>
             '''
         },
         'gangotri': {
@@ -421,17 +413,6 @@ def char_dham_detail(dham_name):
             'detailed_info': '''
             <h3>About Gangotri</h3>
             <p>Gangotri is a town and a Nagar Panchayat in Uttarkashi district of Uttarakhand. It is a Hindu pilgrim town on the banks of the river Bhagirathi.</p>
-            
-            <h3>Key Highlights</h3>
-            <ul>
-                <li>The origin of the River Ganges at Gaumukh</li>
-                <li>Gangotri Temple built by Amar Singh Thapa in the 18th century</li>
-                <li>Submerged Shivling - natural rock Shivling visible in winter</li>
-                <li>Pandava Gufa - cave where Pandavas meditated</li>
-            </ul>
-            
-            <h3>Spiritual Significance</h3>
-            <p>According to Hindu mythology, Goddess Ganga took the form of a river to absolve the sins of King Bhagirath's predecessors.</p>
             '''
         },
         'kedarnath': {
@@ -446,17 +427,6 @@ def char_dham_detail(dham_name):
             'detailed_info': '''
             <h3>About Kedarnath</h3>
             <p>Kedarnath is a Hindu temple dedicated to Lord Shiva. Located on the Garhwal Himalayan range near the Mandakini river, it is one of the twelve Jyotirlingas.</p>
-            
-            <h3>Key Highlights</h3>
-            <ul>
-                <li>One of the 12 Jyotirlingas of Lord Shiva</li>
-                <li>Built by Adi Shankaracharya in the 8th century</li>
-                <li>Survived the 2013 Uttarakhand floods</li>
-                <li>Part of Panch Kedar pilgrimage sites</li>
-            </ul>
-            
-            <h3>Trek Information</h3>
-            <p>The trek from Gaurikund to Kedarnath is 16 km. Helicopter services are also available from Phata, Sirsi, and Guptkashi.</p>
             '''
         },
         'badrinath': {
@@ -471,17 +441,6 @@ def char_dham_detail(dham_name):
             'detailed_info': '''
             <h3>About Badrinath</h3>
             <p>Badrinath is a town and nagar panchayat in Chamoli district of Uttarakhand. It is the most important of the four sites in India's Char Dham pilgrimage.</p>
-            
-            <h3>Key Highlights</h3>
-            <ul>
-                <li>Dedicated to Lord Vishnu as Badrinarayan</li>
-                <li>Mentioned in Vedic scriptures</li>
-                <li>Hot water springs at Tapt Kund</li>
-                <li>Mana Village - last village before Tibet border</li>
-            </ul>
-            
-            <h3>Temple Architecture</h3>
-            <p>The temple is approximately 50 ft tall with a small cupola on top, covered with a gold gilt roof. The facade is built of stone, with arched windows.</p>
             '''
         }
     }
@@ -491,6 +450,7 @@ def char_dham_detail(dham_name):
         return "Dham not found", 404
     
     return render_template('char-dham-detail.html', dham=dham)
+
 @app.route('/api/submit-booking', methods=['POST'])
 def submit_booking():
     try:
@@ -499,7 +459,7 @@ def submit_booking():
             return jsonify({"status": "error", "message": "No data provided"}), 400
         
         # Save booking to database
-        conn = sqlite3.connect('visitors.db')
+        conn = get_db_connection()
         c = conn.cursor()
         c.execute("INSERT INTO bookings (name, email, phone, pickup_location, drop_location, passengers, message) VALUES (?, ?, ?, ?, ?, ?, ?)",
                   (data['name'], data.get('email', ''), data['phone'], 
@@ -517,10 +477,5 @@ def submit_booking():
 def book_now():
     return render_template('contact-us.html')
 
-if __name__ == '__main__':
-    # Create static directories if they don't exist
-    os.makedirs('static/images/vehicles', exist_ok=True)
-    os.makedirs('static/images/packages', exist_ok=True)
-    os.makedirs('static/images/blogs', exist_ok=True)
-    
-    app.run(debug=True, host='0.0.0.0', port=5001)
+# Vercel requires this
+app = app
