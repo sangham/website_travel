@@ -1,0 +1,1280 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Royal Tour & Travel - Best Taxi Service in Dehradun</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css">
+    <style>
+        :root {
+            --primary: #f15d30;
+            --secondary: #1a5276;
+            --dark: #333;
+            --light: #f8f9fa;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f5f5f5;
+            color: var(--dark);
+            line-height: 1.6;
+        }
+        
+        .top-header {
+            background-color: var(--secondary);
+            color: white;
+            padding: 8px 0;
+            font-size: 14px;
+        }
+        
+        .top-header ul {
+            display: flex;
+            justify-content: flex-end;
+            list-style: none;
+            margin: 0;
+            padding: 0 15px;
+        }
+        
+        .top-header ul li {
+            margin-left: 20px;
+        }
+        
+        .top-header ul li a {
+            color: white;
+            text-decoration: none;
+        }
+        
+        .top-header ul li a:hover {
+            color: var(--primary);
+        }
+        
+        .top-header .icon {
+            margin-right: 5px;
+        }
+        
+        .navbar {
+            background-color: white;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            padding: 15px 0;
+        }
+        
+        .navbar-brand {
+            font-weight: 700;
+            font-size: 24px;
+            color: var(--secondary);
+        }
+        
+        .navbar-brand span {
+            display: block;
+            font-size: 14px;
+            color: var(--primary);
+            font-weight: 400;
+        }
+        
+        .navbar-nav .nav-link {
+            color: var(--dark);
+            font-weight: 500;
+            margin: 0 10px;
+            transition: color 0.3s;
+        }
+        
+        .navbar-nav .nav-link:hover {
+            color: var(--primary);
+        }
+        
+        .hero-wrap {
+    background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('https://images.unsplash.com/photo-1488646953014-85cb44e25828?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1335&q=80') no-repeat center center fixed;
+    background-size: cover;
+    color: white;
+    padding: 100px 0;
+    position: relative;
+    min-height: 80vh;
+    display: flex;
+    align-items: center;
+}
+
+        .hero-wrap .overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0,0,0,0.4);
+            z-index: 1;
+        }
+
+        .hero-wrap .container {
+            position: relative;
+            z-index: 2;
+        }
+
+        .home_page_main_slider h1 {
+            font-size: 42px;
+            font-weight: 700;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+
+        .home_page_main_slider p.caps {
+            font-size: 18px;
+            margin-bottom: 30px;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+        }
+        
+        
+        .btn-primary {
+            background-color: var(--primary);
+            border-color: var(--primary);
+            padding: 12px 30px;
+            font-weight: 600;
+            border-radius: 5px;
+            transition: all 0.3s;
+        }
+        
+        .btn-primary:hover {
+            background-color: #e04a1f;
+            border-color: #e04a1f;
+            transform: translateY(-2px);
+        }
+        
+        .home_banner_form {
+            background: white;
+            border-radius: 10px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+        
+        .form-control {
+            padding: 12px 15px;
+            margin-bottom: 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+        
+        .ftco-section {
+            padding: 80px 0;
+        }
+        
+        .heading-section {
+            margin-bottom: 50px;
+        }
+        
+        .heading-section h2 {
+            color: var(--secondary);
+            font-weight: 700;
+            margin-bottom: 15px;
+            position: relative;
+            padding-bottom: 15px;
+        }
+        
+        .heading-section h2:after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 60px;
+            height: 3px;
+            background-color: var(--primary);
+        }
+        
+        .vehicle_content_box, .content_box {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            transition: transform 0.3s;
+            margin-bottom: 20px;
+        }
+        
+        .vehicle_content_box:hover, .content_box:hover {
+            transform: translateY(-10px);
+        }
+        
+        .vehicle_image_box, .banner_box {
+            height: 200px;
+            overflow: hidden;
+        }
+        
+        .vehicle_image_box img, .banner_box img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+        
+        .vehicle_content_box:hover .vehicle_image_box img,
+        .content_box:hover .banner_box img {
+            transform: scale(1.1);
+        }
+        
+        .vehicle_name {
+            padding: 15px;
+            text-align: center;
+            font-weight: 600;
+            color: var(--secondary);
+            background: white;
+        }
+        
+        .content_text_box {
+            padding: 20px;
+            background: white;
+        }
+        
+        .content_text_box h4 {
+            color: var(--secondary);
+            margin-bottom: 10px;
+        }
+        
+        .content_text_box h4 a {
+            color: var(--secondary);
+            text-decoration: none;
+        }
+        
+        .content_text_box p {
+            color: #666;
+            margin-bottom: 15px;
+        }
+        
+        .vehicle_grid_buttons {
+            display: flex;
+            justify-content: space-between;
+        }
+        
+        .vehicle_grid_buttons a {
+            background: var(--primary);
+            color: white;
+            padding: 8px 15px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-size: 14px;
+            transition: background 0.3s;
+        }
+        
+        .vehicle_grid_buttons a:first-child {
+            background: var(--secondary);
+        }
+        
+        .vehicle_grid_buttons a:hover {
+            background: #e04a1f;
+        }
+        
+        .vehicle_grid_buttons a:first-child:hover {
+            background: #144265;
+        }
+        
+        .testimony-section {
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://images.unsplash.com/photo-1552733407-5d5c46c3bb3b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1080&q=80');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            position: relative;
+        }
+        
+        .testimonial_box {
+            background: white;
+            border-radius: 10px;
+            padding: 30px;
+            color: var(--dark);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+        
+        .testimonial_image_box {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            overflow: hidden;
+            margin: 0 auto 20px;
+        }
+        
+        .testimonial_image_box img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .testimonial_content_box h4 {
+            color: var(--secondary);
+            text-align: center;
+            margin-bottom: 15px;
+        }
+        
+        .testimonial_content_box p {
+            text-align: center;
+            font-style: italic;
+            margin-bottom: 15px;
+        }
+        
+        .testimonial_star_box {
+            text-align: center;
+        }
+        
+        .testimonial_star_box .fa-star {
+            color: #ffc107;
+        }
+        
+        .scanner-section {
+            background: var(--light);
+            padding: 80px 0;
+        }
+        
+        .scanner-box {
+            background: white;
+            border-radius: 10px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+        
+        
+        .scanner-interface {
+            background: #f8f9fa;
+            border-radius: 10px;
+            padding: 20px;
+            border: 2px dashed #ddd;
+        }
+
+        #qr-video {
+            background: #000;
+        }
+
+        #scanner-placeholder {
+            background: transparent;
+            border: none;
+        }
+
+        .scanner-controls {
+            margin-top: 15px;
+        }
+
+        #scan-result {
+            margin-top: 20px;
+        }
+
+        .scanner-status {
+            text-align: center;
+            padding: 10px;
+            background: #e9ecef;
+            border-radius: 5px;
+            margin-bottom: 15px;
+        }
+
+        .scanner-placeholder i {
+            font-size: 80px;
+            color: #ccc;
+            margin-bottom: 20px;
+        }
+        
+        .scanner-form {
+            text-align: left;
+        }
+        
+        footer {
+            background: linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.8)), url('https://images.unsplash.com/photo-1539635278303-d4002c07eae3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            padding: 80px 0 20px;
+        }
+        
+        .ftco-footer-widget h2 {
+            color: white;
+            font-size: 24px;
+            margin-bottom: 20px;
+            position: relative;
+            padding-bottom: 15px;
+        }
+        
+        .ftco-footer-widget h2:after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 50px;
+            height: 2px;
+            background-color: var(--primary);
+        }
+        
+        .ftco-footer-widget p, .ftco-footer-widget a {
+            color: #ddd;
+            margin-bottom: 10px;
+            display: block;
+            text-decoration: none;
+        }
+        
+        .ftco-footer-widget a:hover {
+            color: var(--primary);
+        }
+        
+        .ftco-footer-social li {
+            display: inline-block;
+            margin-right: 10px;
+        }
+        
+        .ftco-footer-social a {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 40px;
+            height: 40px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 50%;
+            color: white;
+            transition: all 0.3s;
+        }
+        
+        .ftco-footer-social a:hover {
+            background: var(--primary);
+            transform: translateY(-3px);
+        }
+        
+        .block-23 ul {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .block-23 ul li {
+            margin-bottom: 15px;
+            display: flex;
+        }
+        
+        .block-23 ul li .icon {
+            width: 40px;
+            font-size: 18px;
+            color: var(--primary);
+        }
+        
+        .whatspp_footer {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 1000;
+        }
+        
+        .whatspp_footer img {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            transition: transform 0.3s;
+        }
+        
+        .whatspp_footer img:hover {
+            transform: scale(1.1);
+        }
+        
+        .view_more_vehicles, .view_more_row {
+            margin-top: 30px;
+            text-align: center;
+        }
+        
+        .view_more_vehicles a, .view_more_row a {
+            background: var(--primary);
+            color: white;
+            padding: 12px 30px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: background 0.3s;
+        }
+        
+        .view_more_vehicles a:hover, .view_more_row a:hover {
+            background: #e04a1f;
+        }
+        
+        @media (max-width: 768px) {
+            .top-header ul {
+                justify-content: center;
+            }
+            
+            .home_page_main_slider h1 {
+                font-size: 32px;
+            }
+            
+            .home_page_main_slider p.caps {
+                font-size: 16px;
+            }
+            
+            .vehicle_grid_buttons {
+                flex-direction: column;
+            }
+            
+            .vehicle_grid_buttons a {
+                margin-bottom: 10px;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Top Header -->
+    <div class="top-header">
+        <div class="container">
+            <ul>
+                <li><a href="mailto:info@royaltourr.com"><span class="icon fa fa-envelope"></span> info@royaltourr.com</a></li>
+                <li class="phone_header"><a href="tel:+919915766717"><span class="icon fa fa-phone"></span> +91 9915766717</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-light">
+        <div class="container">
+            <a class="navbar-brand" href="/">Royal Tour<span>Travel Agency</span></a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="/">Home</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Services
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <li><a class="dropdown-item" href="/vehicles">Vehicles</a></li>
+                            <li><a class="dropdown-item" href="/vacation-packages">Vacation Packages</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/char-dham-yatra">Char Dham Yatra</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/blogs">Blogs</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/contact-us">Contact Us</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+         <!-- Hero Section -->
+    <section class="hero-wrap" style="background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('https://royaltourr.com/wp-content/themes/traveltour/assets/images/bg_5.jpg') no-repeat center center; background-size: cover;">
+        <div class="overlay"></div>
+        <div class="container">
+            <div class="row align-items-center home_page_main_slider" style="min-height: 60vh;">
+                <div class="col-md-7">
+                    <h1 class="mb-4">Begin your journey with Dehradun's top-rated taxi service in Uttarakhand for a smooth travel experience.</h1>
+                    <p class="caps">Searching for the top taxi service in Dehradun, Uttarakhand?<br>
+                    Choose our trusted cabs for local and outstation travel.<br>
+                    Enjoy budget-friendly rates, expert drivers, and premium vehicles — with no hidden costs!</p>
+                    <p><a href="/book-now" class="btn btn-primary py-3 px-4">Book now</a></p>
+                </div>
+                <div class="col-md-5">
+                    <div class="home_banner_form">
+                        <h3>Book Your Ride</h3>
+                        <form id="bookingForm">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <input type="text" class="form-control" name="name" placeholder="Your Name" required>
+                                </div>
+                                <div class="col-md-6">
+                                    <input type="email" class="form-control" name="email" placeholder="Your Email">
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <input type="tel" class="form-control" name="phone" placeholder="Phone Number" required>
+                                </div>
+                                <div class="col-md-6">
+                                    <select class="form-control" name="pickup_location" required>
+                                        <option value="">Pickup Location</option>
+                                        <option value="Dehradun">Dehradun</option>
+                                        <option value="Delhi">Delhi</option>
+                                        <option value="Haridwar">Haridwar</option>
+                                        <option value="Rishikesh">Rishikesh</option>
+                                        <option value="Mussoorie">Mussoorie</option>
+                                        <option value="Roorkee">Roorkee</option>
+                                        <option value="Kashipur">Kashipur</option>
+                                        <option value="Champawat">Champawat</option>
+                                        <option value="Nainital">Nainital</option>
+                                        <option value="Haldwani">Haldwani</option>
+                                        <option value="haryana">Haryana</option>
+                                        <option value="Uttar Pradesh">Uttar Pradesh</option>
+                                        <option value="Punjab">Punjab</option>
+                                        <option value="Rajasthan">Rajasthan</option>
+                                        <option value="Himachal Pradesh">Himachal Pradesh</option>
+                                        <option value="Jammu and Kashmir">Jammu and Kashmir</option>
+                                        <option value="Ladakh">Ladakh</option>
+                                        <option value="Goa">Goa</option>
+
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <input type="text" class="form-control" name="drop_location" placeholder="Drop Location" required>
+                                </div>
+                                <div class="col-md-6">
+                                    <select class="form-control" name="passengers" required>
+                                        <option value="">Passengers</option>
+                                        <option value="1">1 Passenger</option>
+                                        <option value="2">2 Passengers</option>
+                                        <option value="3">3 Passengers</option>
+                                        <option value="4">4 Passengers</option>
+                                        <option value="5">5 Passengers</option>
+                                        <option value="6">6 Passengers</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <textarea class="form-control" name="message" rows="3" placeholder="Message (Optional)"></textarea>
+                            <button type="submit" class="btn btn-primary w-100 mt-3">Submit Request</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Vehicles Section -->
+    <section class="ftco-section">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-md-12 heading-section text-center">
+                    <h2 class="mb-4">Our Vehicles</h2>
+                    <div class="row">
+                        <div class="col-md-12 my_vacations_outer">
+                            <div class="my_vehicles owl-carousel owl-theme">
+                                <div class="item">
+                                    <article class="vehicle_content_box">
+                                        <div class="vehicle_image_box">
+                                            <a href="/vehicle/1" class="banner_box d-block">
+                                                <img src="https://royaltourr.com/wp-content/uploads/2025/07/Toyota-Innova-Crysta.png" alt="Toyota Innova Crysta">
+                                            </a>
+                                        </div>
+                                        <div class="vehicle_name">
+                                            Toyota Innova Crysta
+                                        </div>
+                                    </article>
+                                </div>
+                                <div class="item">
+                                    <article class="vehicle_content_box">
+                                        <div class="vehicle_image_box">
+                                            <a href="/vehicle/2" class="banner_box d-block">
+                                                <img src="https://royaltourr.com/wp-content/uploads/2025/07/Kia-Carens.png" alt="Kia Carens">
+                                            </a>
+                                        </div>
+                                        <div class="vehicle_name">
+                                            Kia Carens
+                                        </div>
+                                    </article>
+                                </div>
+                                <div class="item">
+                                    <article class="vehicle_content_box">
+                                        <div class="vehicle_image_box">
+                                            <a href="/vehicle/3" class="banner_box d-block">
+                                                <img src="https://royaltourr.com/wp-content/uploads/2025/07/Toyota-Rumion.png" alt="Toyota Rumion">
+                                            </a>
+                                        </div>
+                                        <div class="vehicle_name">
+                                            Toyota Rumion
+                                        </div>
+                                    </article>
+                                </div>
+                                <div class="item">
+                                    <article class="vehicle_content_box">
+                                        <div class="vehicle_image_box">
+                                            <a href="/vehicle/4" class="banner_box d-block">
+                                                <img src="https://royaltourr.com/wp-content/uploads/2025/07/Maruti-Ertiga.png" alt="Maruti Ertiga">
+                                            </a>
+                                        </div>
+                                        <div class="vehicle_name">
+                                            Maruti Ertiga
+                                        </div>
+                                    </article>
+                                </div>
+                                <div class="item">
+                                    <article class="vehicle_content_box">
+                                        <div class="vehicle_image_box">
+                                            <a href="/vehicle/5" class="banner_box d-block">
+                                                <img src="https://royaltourr.com/wp-content/uploads/2025/07/Honda-Amaze.png" alt="Honda Amaze">
+                                            </a>
+                                        </div>
+                                        <div class="vehicle_name">
+                                            Honda Amaze
+                                        </div>
+                                    </article>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-12 text-center view_more_vehicles">
+                            <a href="/vehicles">Explore All Vehicles</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Vacation Packages -->
+    <section class="ftco-section pt-0">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-md-12 heading-section text-center">
+                    <h2 class="mb-4">Our Vacation Packages</h2>
+                    <div class="row">
+                        <div class="col-md-12 my_vacations_outer">
+                            <div class="my_vacations owl-carousel owl-theme">
+                                <div class="item">
+                                    <article class="content_box">
+                                        <div class="banner_box">
+                                            <a href="/package/1" class="banner_box d-block">
+                                                <img src="https://royaltourr.com/wp-content/uploads/2025/07/Chandigarh-1024x512.jpeg" alt="Dehradun to Chandigarh">
+                                            </a>
+                                        </div>
+                                        <div class="content_text_box p-3">
+                                            <h4 class="mb-2">
+                                                <a href="/package/1">
+                                                    Dehradun to Chandigarh
+                                                </a>
+                                            </h4>
+                                            <p class="mb-2">Book your cab from Dehradun to Chandigarh with comfort and safety. AC cars, verified drivers,…</p>
+                                            <div class="vehicle_grid_buttons">
+                                                <a href="/package/1">View Details</a>
+                                                <a href="/book-now?package=Dehradun to Chandigarh">Book Now</a>
+                                            </div>
+                                        </div>
+                                    </article>
+                                </div>
+                                <div class="item">
+                                    <article class="content_box">
+                                        <div class="banner_box">
+                                            <a href="/package/2" class="banner_box d-block">
+                                                <img src="https://royaltourr.com/wp-content/uploads/2025/07/Bihar-1024x512.jpeg" alt="Dehradun to Bihar">
+                                            </a>
+                                        </div>
+                                        <div class="content_text_box p-3">
+                                            <h4 class="mb-2">
+                                                <a href="/package/2">
+                                                    Dehradun to Bihar
+                                                </a>
+                                            </h4>
+                                            <p class="mb-2">Book a taxi from Dehradun to Bihar at affordable rates. Safe and comfortable AC cabs…</p>
+                                            <div class="vehicle_grid_buttons">
+                                                <a href="/package/2">View Details</a>
+                                                <a href="/book-now?package=Dehradun to Bihar">Book Now</a>
+                                            </div>
+                                        </div>
+                                    </article>
+                                </div>
+                                <div class="item">
+                                    <article class="content_box">
+                                        <div class="banner_box">
+                                            <a href="/package/3" class="banner_box d-block">
+                                                <img src="https://royaltourr.com/wp-content/uploads/2025/07/Uttar-Pradesh-1024x512.jpeg" alt="Dehradun to Uttar Pradesh">
+                                            </a>
+                                        </div>
+                                        <div class="content_text_box p-3">
+                                            <h4 class="mb-2">
+                                                <a href="/package/3">
+                                                    Dehradun to Uttar Pradesh
+                                                </a>
+                                            </h4>
+                                            <p class="mb-2">Book your taxi from Dehradun to Uttar Pradesh with ease. Safe, reliable cabs to Meerut,…</p>
+                                            <div class="vehicle_grid_buttons">
+                                                <a href="/package/3">View Details</a>
+                                                <a href="/book-now?package=Dehradun to Uttar Pradesh">Book Now</a>
+                                            </div>
+                                        </div>
+                                    </article>
+                                </div>
+                                <div class="item">
+                                    <article class="content_box">
+                                        <div class="banner_box">
+                                            <a href="/package/4" class="banner_box d-block">
+                                                <img src="https://royaltourr.com/wp-content/uploads/2025/07/Punjab-1024x512.jpg" alt="Dehradun to Punjab">
+                                            </a>
+                                        </div>
+                                        <div class="content_text_box p-3">
+                                            <h4 class="mb-2">
+                                                <a href="/package/4">
+                                                    Dehradun to Punjab
+                                                </a>
+                                            </h4>
+                                            <p class="mb-2">Book a taxi from Dehradun to Punjab for a smooth, safe, and affordable ride. Travel…</p>
+                                            <div class="vehicle_grid_buttons">
+                                                <a href="/package/4">View Details</a>
+                                                <a href="/book-now?package=Dehradun to Punjab">Book Now</a>
+                                            </div>
+                                        </div>
+                                    </article>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-12 text-center view_more_row">
+                            <a href="/vacation-packages">Explore All Vacation Packages</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- QR Scanner Section -->
+        <!-- QR Scanner Section -->
+    <section class="scanner-section">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-md-8">
+                    <div class="scanner-box">
+                        <h2 class="mb-4">QR Code Scanner</h2>
+                        <p class="mb-4">Scan any QR code to get instant access to our travel deals and special offers. Your information will be securely stored and we'll contact you with exclusive offers.</p>
+                        
+                        <div class="scanner-interface mb-4">
+                            <div id="qr-scanner-container">
+                                <div id="qr-video-container">
+                                    <video id="qr-video" width="100%" height="300" style="border-radius: 10px; display: none;"></video>
+                                    <canvas id="qr-canvas" style="display: none;"></canvas>
+                                </div>
+                                <div id="scanner-placeholder" class="scanner-placeholder">
+                                    <i class="fas fa-qrcode"></i>
+                                    <p>Click Start Scanner to begin</p>
+                                    <button id="start-scanner" class="btn btn-primary mt-3">Start Scanner</button>
+                                </div>
+                            </div>
+                            <div id="scanner-controls" class="text-center mt-3" style="display: none;">
+                                <button id="stop-scanner" class="btn btn-secondary">Stop Scanner</button>
+                                <button id="switch-camera" class="btn btn-outline-primary">Switch Camera</button>
+                            </div>
+                        </div>
+                        
+                        <div id="scan-result" class="alert alert-success" style="display: none;">
+                            <h5>QR Code Scanned Successfully!</h5>
+                            <p id="result-text"></p>
+                        </div>
+
+                        <h3 class="mb-3">Manual Information Form</h3>
+                        <p class="mb-4">Can't scan? Fill out your details below to get the same special offers</p>
+                        
+                        <form class="scanner-form" id="visitorForm">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="mb-3">
+                                        <label for="name" class="form-label">Full Name *</label>
+                                        <input type="text" class="form-control" id="name" required>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="mb-3">
+                                        <label for="phone" class="form-label">Phone Number *</label>
+                                        <input type="tel" class="form-control" id="phone" required>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="mb-3">
+                                        <label for="email" class="form-label">Email Address</label>
+                                        <input type="email" class="form-control" id="email">
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="mb-3">
+                                        <label for="interest" class="form-label">Travel Interest *</label>
+                                        <select class="form-control" id="interest" required>
+                                            <option value="">Select Interest</option>
+                                            <option value="char-dham">Char Dham Yatra</option>
+                                            <option value="local-tours">Local Tours</option>
+                                            <option value="vacation-packages">Vacation Packages</option>
+                                            <option value="corporate-travel">Corporate Travel</option>
+                                            <option value="airport-transfers">Airport Transfers</option>
+                                            <option value="other">Other</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="mb-3">
+                                <label for="message" class="form-label">Message</label>
+                                <textarea class="form-control" id="message" rows="3" placeholder="Tell us about your travel plans..."></textarea>
+                            </div>
+                            <button type="submit" class="btn btn-primary w-100">Get Special Offers</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="ftco-section testimony-section">
+        <div class="overlay"></div>
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-md-12 heading-section text-center">
+                    <h2 class="mb-4 text-white">What Our Customers Say</h2>
+                    <div class="row">
+                        <div class="col-md-12 my_vacations_outer">
+                            <div class="my_testimonials owl-carousel owl-theme">
+                                <div class="item">
+                                    <div class="testimonial_box">
+                                        <div class="testimonial_image_box">
+                                            <img src="https://royaltourr.com/wp-content/themes/traveltour/assets/images/person_1.jpg">
+                                        </div>
+                                        <div class="testimonial_content_box">
+                                            <h4>Karan Partap</h4>
+                                            <p>Absolutely loved my tour with Royal Tourr And Travels. The itinerary was perfectly planned, giving us a fantastic overview of the local attractions. Highly recommend!</p>
+                                        </div>
+                                        <div class="testimonial_star_box">
+                                            <p class="star">
+                                                <span class="fa fa-star"></span>
+                                                <span class="fa fa-star"></span>
+                                                <span class="fa fa-star"></span>
+                                                <span class="fa fa-star"></span>
+                                                <span class="fa fa-star"></span>
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="item">
+                                    <div class="testimonial_box">
+                                        <div class="testimonial_image_box">
+                                            <img src="https://royaltourr.com/wp-content/themes/traveltour/assets/images/person_2.jpg">
+                                        </div>
+                                        <div class="testimonial_content_box">
+                                            <h4>Dinesh Choudhary</h4>
+                                            <p>Had an amazing time with Royal Tourr And Travels. From the stunning sights to the friendly guides, everything exceeded our expectations. Will definitely book again!</p>
+                                        </div>
+                                        <div class="testimonial_star_box">
+                                            <p class="star">
+                                                <span class="fa fa-star"></span>
+                                                <span class="fa fa-star"></span>
+                                                <span class="fa fa-star"></span>
+                                                <span class="fa fa-star"></span>
+                                                <span class="fa fa-star"></span>
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-5 col-md">
+                    <div class="ftco-footer-widget pt-md-5 mb-4">
+                        <h2 class="ftco-heading-2">Royal Tour Travel Agency</h2>
+                        <p>Royal Tourr And Travels provides the best tour services in Uttarakhand for 4 dham yatra, travel packages, and more. Contact us for more info.</p>
+                        <p><b>Mobile :</b><a href="tel:+919915766717"> +91 9915766717</a></p>
+                        <p><b>Email :</b> <a href="mailto:royaltourandtravelsagency@gmail.com">info@royaltourr.com</a></p>
+                        <ul class="ftco-footer-social list-unstyled float-md-left float-lft mt-3">
+                            <li class="ftco-animate"><a href="#"><span class="fa fa-twitter"></span></a></li>
+                            <li class="ftco-animate"><a href="#"><span class="fa fa-facebook"></span></a></li>
+                            <li class="ftco-animate"><a href="#"><span class="fa fa-instagram"></span></a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md border-left">
+                    <div class="ftco-footer-widget pt-md-5 mb-4 ml-md-4">
+                        <h2 class="ftco-heading-2">Services</h2>
+                        <ul class="list-unstyled">
+                            <li><a href="/vehicles" class="">Vehicles</a></li>
+                            <li><a href="/vacation-packages" class="">Vacation Packages</a></li>
+                            <li><a href="/char-dham-yatra" class="">Char Dham Yatra</a></li>
+                            <li><a href="#" class="">Refund Policy</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md border-left">
+                    <div class="ftco-footer-widget pt-md-5 mb-4">
+                        <h2 class="ftco-heading-2">Have a Questions?</h2>
+                        <div class="block-23 mb-3">
+                            <ul>
+                                <li><span class="icon fa fa-map-marker"></span><span class="text">Near Shakuntla School, Brahmanwala Chowk, Phase 1, Dehradun, Uttarakhand 248001</span></li>
+                                <li><a href="tel:+919915766717"><span class="icon fa fa-phone"></span><span class="text">+91 9915766717</span></a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12 text-center">
+                    <p>© 2025 - 2026 Royaltourr. All rights reserved.</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="whatspp_footer">
+            <a href="https://wa.me/+919915766717"><img src="https://royaltourr.com/wp-content/uploads/2025/06/WhatsApp.svg_.webp" alt="WhatsApp"></a>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
+    <!-- QR Scanner Library -->
+    <script src="https://cdn.jsdelivr.net/npm/jsqr@1.4.0/dist/jsQR.js"></script>
+    
+    <script>
+        $(document).ready(function(){
+            // Initialize carousels
+            $('.my_vehicles').owlCarousel({
+                loop: true,
+                margin: 20,
+                nav: false,
+                dots: false,
+                autoplay: true,
+                responsive: {
+                    0: { items: 2 },
+                    768: { items: 3 },
+                    992: { items: 5 }
+                }
+            });
+            
+            $('.my_vacations').owlCarousel({
+                loop: true,
+                margin: 20,
+                nav: false,
+                dots: false,
+                autoplay: true,
+                responsive: {
+                    0: { items: 1 },
+                    768: { items: 2 },
+                    992: { items: 3 }
+                }
+            });
+            
+            $('.my_testimonials').owlCarousel({
+                loop: true,
+                margin: 20,
+                nav: false,
+                dots: false,
+                autoplay: true,
+                responsive: {
+                    0: { items: 1 },
+                    768: { items: 2 }
+                }
+            });
+
+            // QR Scanner Variables
+            let videoStream = null;
+            let currentFacingMode = 'environment'; // Start with back camera
+            const video = document.getElementById('qr-video');
+            const canvas = document.getElementById('qr-canvas');
+            const canvasContext = canvas.getContext('2d');
+            let scanning = false;
+
+            // Start QR Scanner
+            $('#start-scanner').on('click', function() {
+                startQRScanner();
+            });
+
+            // Stop QR Scanner
+            $('#stop-scanner').on('click', function() {
+                stopQRScanner();
+            });
+
+            // Switch Camera
+            $('#switch-camera').on('click', function() {
+                currentFacingMode = currentFacingMode === 'environment' ? 'user' : 'environment';
+                stopQRScanner();
+                startQRScanner();
+            });
+
+            function startQRScanner() {
+                const constraints = {
+                    video: {
+                        facingMode: currentFacingMode,
+                        width: { ideal: 1280 },
+                        height: { ideal: 720 }
+                    }
+                };
+
+                navigator.mediaDevices.getUserMedia(constraints)
+                    .then(function(stream) {
+                        videoStream = stream;
+                        video.srcObject = stream;
+                        video.play();
+                        
+                        // Show video and controls, hide placeholder
+                        $('#qr-video').show();
+                        $('#scanner-placeholder').hide();
+                        $('#scanner-controls').show();
+                        
+                        scanning = true;
+                        scanQRCode();
+                    })
+                    .catch(function(error) {
+                        console.error('Error accessing camera:', error);
+                        alert('Unable to access camera. Please ensure you have granted camera permissions and try again.');
+                    });
+            }
+
+            function stopQRScanner() {
+                scanning = false;
+                
+                if (videoStream) {
+                    videoStream.getTracks().forEach(track => track.stop());
+                    videoStream = null;
+                }
+                
+                video.srcObject = null;
+                
+                // Show placeholder, hide video and controls
+                $('#scanner-placeholder').show();
+                $('#qr-video').hide();
+                $('#scanner-controls').hide();
+                $('#scan-result').hide();
+            }
+
+            function scanQRCode() {
+                if (!scanning) return;
+
+                if (video.readyState === video.HAVE_ENOUGH_DATA) {
+                    canvas.width = video.videoWidth;
+                    canvas.height = video.videoHeight;
+                    canvasContext.drawImage(video, 0, 0, canvas.width, canvas.height);
+                    
+                    const imageData = canvasContext.getImageData(0, 0, canvas.width, canvas.height);
+                    const code = jsQR(imageData.data, imageData.width, imageData.height);
+                    
+                    if (code) {
+                        // QR Code detected!
+                        handleQRScanResult(code.data);
+                    }
+                }
+                
+                // Continue scanning
+                if (scanning) {
+                    requestAnimationFrame(scanQRCode);
+                }
+            }
+
+            function handleQRScanResult(qrData) {
+                stopQRScanner();
+                
+                // Show success message
+                $('#result-text').text(`Scanned: ${qrData}`);
+                $('#scan-result').show();
+                
+                // Auto-fill form if QR contains URL with parameters
+                try {
+                    const url = new URL(qrData);
+                    const params = new URLSearchParams(url.search);
+                    
+                    if (params.has('name')) $('#name').val(params.get('name'));
+                    if (params.has('phone')) $('#phone').val(params.get('phone'));
+                    if (params.has('email')) $('#email').val(params.get('email'));
+                    if (params.has('interest')) $('#interest').val(params.get('interest'));
+                    
+                    // Scroll to form
+                    $('html, body').animate({
+                        scrollTop: $('#visitorForm').offset().top - 100
+                    }, 500);
+                    
+                } catch (e) {
+                    // If it's not a URL, just show the scanned data
+                    console.log('QR content:', qrData);
+                }
+                
+                // Send scan data to server
+                fetch('/api/qr-scan', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        qr_data: qrData,
+                        scan_time: new Date().toISOString()
+                    })
+                });
+            }
+
+            // Visitor Form Submission
+            $('#visitorForm').on('submit', function(e) {
+                e.preventDefault();
+                
+                const formData = {
+                    name: $('#name').val(),
+                    email: $('#email').val(),
+                    phone: $('#phone').val(),
+                    interest: $('#interest').val(),
+                    message: $('#message').val(),
+                    source: 'qr_scanner'
+                };
+                
+                // Send data to Flask backend
+                fetch('/api/submit-visitor', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(formData)
+                })
+                .then(response => response.json())
+                .then(data => {
+                    alert('Thank you! Your information has been submitted. We will contact you soon with special offers.');
+                    $('#visitorForm')[0].reset();
+                    $('#scan-result').hide();
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                    alert('There was an error submitting your information. Please try again.');
+                });
+            });
+            
+            // Booking Form Submission (Hero Section)
+            $('#bookingForm').on('submit', function(e) {
+                e.preventDefault();
+                
+                const formData = {
+                    name: $(this).find('input[name="name"]').val(),
+                    email: $(this).find('input[name="email"]').val(),
+                    phone: $(this).find('input[name="phone"]').val(),
+                    pickup: $(this).find('select[name="pickup_location"]').val(),
+                    drop: $(this).find('input[name="drop_location"]').val(),
+                    passengers: $(this).find('select[name="passengers"]').val(),
+                    message: $(this).find('textarea[name="message"]').val()
+                };
+                
+                // Send data to Flask backend
+                fetch('/api/submit-booking', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(formData)
+                })
+                .then(response => response.json())
+                .then(data => {
+                    alert('Thank you for your booking request! We will contact you shortly to confirm your ride.');
+                    $('#bookingForm')[0].reset();
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                    alert('There was an error submitting your booking request. Please try again.');
+                });
+            });
+            
+            // Book Now buttons in vacation packages
+            $('.vehicle_grid_buttons').on('click', 'a:last-child', function(e) {
+                e.preventDefault();
+                const packageName = $(this).closest('.content_text_box').find('h4 a').text().trim();
+                
+                // Redirect to contact page with package info
+                window.location.href = '/book-now?package=' + encodeURIComponent(packageName);
+            });
+        });
+    </script>
+</body>
+</html>
